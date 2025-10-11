@@ -1,0 +1,46 @@
+Cloud (nube)
+Servidores accesibles mediante internet que almecenan, gestionan y procesan datos.
+
+Dekstop (ordenador de escritorio)
+Computadora diseñado para utilizarse en un solo lugar 
+
+End point router
+
+
+Firewall
+
+
+Laptop (portátil)
+
+
+Layer 3 switch (switch de capa 3)
+
+
+Radio tower (torre de radio)
+
+
+Router firewall
+
+
+Router (enrutador)
+
+
+Server (servidor)
+
+
+Smart tv (television inteligente)
+
+
+Smartphone (telefono inteligente)
+
+
+Switch (conmutador)
+
+
+Wireless access controller (controlador de acceso inalámbrico - WAC)
+
+
+Wireless antena (antena inalámbrica)
+
+
+Wireless router (router inalámbrico)
