@@ -1,0 +1,5 @@
+Descargué la extensión de excalidraw.
+Cree un archivo .excalidraw.
+En este tipo de archivo se crea una pizarra en blanco que me permite crear diseños como si estuviera usando un canva.
+En este archivo cree un diseño de mi casa con los dispositivos que se conectan a la red wifi de forma inalambrica y por via de un cable.
+Este proyecto me permite ver como fluye la red wifi por toda mi casa y ver porqué en algunas zonas el wifi llega mejor que en otras. 
