@@ -2,16 +2,16 @@ Cloud (nube)
 Servidores accesibles mediante internet que almecenan, gestionan y procesan datos.
 
 Dekstop (ordenador de escritorio)
-Computadora diseñado para utilizarse en un solo lugar 
+Computadora diseñado para utilizarse en un solo lugar, ya sea una oficina o una casa y que te permite conectarte a internet  
 
 End point router
-
+Router ubicado en el limite de una red que se conecta a una red externa. 
 
 Firewall
-
+Software de seguridad que bloquea y permite el paso de datos por una red. 
 
 Laptop (portátil)
-
+Computadora portatil y compacta que integra una pantalla, un teclado, un tochpad y batería y que te permite conectarte a internet. 
 
 Layer 3 switch (switch de capa 3)
 
@@ -44,3 +44,4 @@ Wireless antena (antena inalámbrica)
 
 
 Wireless router (router inalámbrico)
+
