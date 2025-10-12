@@ -1,48 +1,50 @@
-Cloud (nube)
-Servidores accesibles mediante internet que almecenan, gestionan y procesan datos.
-
 Dekstop (ordenador de escritorio)
-Computadora diseñado para utilizarse en un solo lugar, ya sea una oficina o una casa y que te permite conectarte a internet  
-
-End point router
-Router ubicado en el limite de una red que se conecta a una red externa. 
-
-Firewall
-Software de seguridad que bloquea y permite el paso de datos por una red. 
+Computadora diseñado para utilizarse en un solo lugar (de escritorio), ya sea una oficina o una casa y que te permite conectar a internet. 
 
 Laptop (portátil)
-Computadora portatil y compacta que integra una pantalla, un teclado, un touchpad y una batería y que te permite conectarte a internet. 
-
-Layer 3 switch (switch de capa 3)
-Dispositivo que fusiona las funciones de un switch (conmutación de datos en Capa 2) y un router (enrutamiento en Capa 3) permitiendo así el enrutamiento de paquetes entre diferentes redes virtuales (VLANs).
-
-Radio tower (torre de radio)
-Estructura colocada a una gran altura que contiene antenas de comunicación inalámbrica que transmiten y reciben señales a largas distancias.
-
-Router firewall
-Dispositivo que fusiona las funciones de un router (para interconectar redes y dirigir datos) y un firewall (para seguridad y filtrado de datos).
-
-Router (enrutador)
-
-
-Server (servidor)
-
-
-Smart tv (television inteligente)
-
+Computadora portatil y compacta que integra una pantalla, un teclado, un touchpad y una batería y que te permite conectar a internet. 
 
 Smartphone (telefono inteligente)
+Dispositivo portatil que actua como minicomputadora y que integra una pantilla tactil que te permite interactual con la interfaz grafica y conectarte a internet.
 
+Smart tv (television inteligente)
+Televisor que puede ejutar aplicaciones y se puede conectar a internet.
 
-Switch (conmutador)
+Router (enrutador)
+Dispositivo que conecta diferentes dispositivos a internet dirigiendo (enrutando) los paquetes de datos hacia otros routers por la ruta más eficiente hasta llegar al destinatario.
 
-
-Wireless access controller (controlador de acceso inalámbrico - WAC)
-
-
-Wireless antena (antena inalámbrica)
-
+End point router (enrutador de punto final)
+Router ubicado en el limite de una red y que se conecta a una red externa. 
 
 Wireless router (router inalámbrico)
+Router que te permite conectar a la red tanto por cable como por wifi gracias a que conbina un router, um switch y un punto de acceso inalámbrico (AP). 
 
+Firewall (muralla de fuego)
+Software de seguridad que bloquea o permite el paso de datos por una red.
 
+Router firewall (enrutador con muralla de fuego)
+Router que fusiona las funciones de un router convencional (para interconectar redes y dirigir datos) con las de un firewall (para seguridad y filtrado de datos).
+
+Repeater (Repetidor)
+Dispositivo de Capa 1 (física) que regenera y amplifica la señal de una red debilitada para aumentar la distancia a la que puede llegar.
+
+Switch (conmutador)
+Dispotitivo que conecta multiples dispositivos a una misma red local, dirigiendo y gestionando el trafico de datos en esta.
+
+Layer 3 switch (conmutador de capa 3)
+Switch que fusiona las funciones de un switch convencional (conmutación de datos en Capa 2) con las de un router convencional (enrutamiento en Capa 3) permitiendo así el enrutamiento de paquetes entre diferentes redes virtuales (VLANs).
+
+Server (servidor)
+Computadora que gestiona datos provenientes de otros dispositivos que se conectan a esta midiante internet.
+
+Cloud (nube)
+Conjunto de servidores accesibles mediante internet que almecenan, gestionan y procesan una gran cantidad de datos.
+
+Radio tower (torre de radio)
+Estructura colocada a una gran altura que contiene multiples antenas de comunicación inalámbrica que transmiten y reciben señales a largas distancias.
+
+Wireless antena (antena inalámbrica)
+Componente que transmite y recibe ondas de radio para establecer comunicación inalámbrica.
+
+Wireless access controller (controlador de acceso inalámbrico - WAC)
+Dispositivo que controla y gestiona múltiples puntos de acceso inalámbrico (AP) para crear una red Wi-Fi unificada.
