@@ -1,9 +1,0 @@
-netstat
-netstat -a
-ipconfig
-ipconfig/all
-tracert
-ping
-ping + (IP del router)
-ping 8.8.8.8 (servidor de google)
-ping google.com (o cualquier otra página web)
