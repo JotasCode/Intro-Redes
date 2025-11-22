@@ -1,0 +1,26 @@
+Configuracion basica para todos los equipos en este lab (Switch y Routers)
+
+en
+conf t
+no ip domain-lookup
+banner motd #Cuidao con lo que hace manito#
+hostname Dapiato-SD-R1
+enable secret klk001#
+username JotasCode privilege 15 secret hola123@
+ip domaian-name dapiato.com
+crypto key generate rsa
+1024
+ip ssh time-out 60
+ip ssh version 2
+ip ssh authentication-retries 3
+line con 0
+pass nba123
+logging synchronous 
+login local 
+line vty 0 15
+logging synchronous 
+transport input ssh
+no transport input telnet
+end
+copy running-config startup-config
+reload 

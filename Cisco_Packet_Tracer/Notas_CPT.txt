@@ -1,0 +1,25 @@
+CISCO IOS: nombre del sistema operativo.
+Nodos:
+	1. usuario
+		simbolo-representación: >
+		comando N/A
+	2. privilegiado
+		simbolo-representación: #
+		comando: enable
+		abreviatura: en
+	3. configuracion global
+		simbolo-representación: (config)# 
+		comando: configure: terminal
+		abreviatura: conf t
+	4. configuracion de interfaz
+		simbolo-representación: (config-if)#
+		comando: interface nombre-interfaz
+		abrerviatura: int nombre-abreviado
+	5. configuracion de linea
+		simbolo-representación: (config-line)
+		comando: line nombre-linea id-linea
+		abrebiaruta: li nombre-abreviado id-linea
+
+Nota 1. Cada modo de operacion, tiene un grupo de  comando que solo se pueden ejecutar dentro de dicho nodo. 
+
+Nota 2. Para salir de un modo y volver al modo anterior , usamos el comando "exit", y para salir de un modo e ir directamente al modo privilegiado, usamos el comando "end".
