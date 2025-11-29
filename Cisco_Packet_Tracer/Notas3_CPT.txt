@@ -1,0 +1,54 @@
+Configuración del direccionamiento IPv4
+Plan de direccionamiento IPv4 por cada red
+
+1. Dapiato-SD-R1:
+Interfaz	Dirección		IPRed				Propósito
+GO/0		(Hacia SW-Lab)		192.168.10.1 192.168.10.0/24	Gateway Lab
+G0/1		(Hacia SW-Adm)		192.168.20.1 192.168.20.0/24	Gateway Adm
+G0/2		(Hacia Server)		192.168.200.1 192.168.200.0/29	Gateway Server
+G0/3		(Hacia Claro-SD)	10.10.1.1 10.10.1.0/30Enlace	WAN
+
+
+Red Dapiato SD:
+	prefijo de red = /24 => /27
+	máscara de subred = 255.255.255.0 => 255.255.255.224
+	cantidad de direcciones ipv4 = 256 => 32
+	cantidad de equipos = 30
+	direccion IPv4 de red = 198.0.2.0
+	dirección IPv4 del broadcast = 198.0.2.31
+	dirección IPv4 disponibles = 30
+	dirección IPv4 del router = 198.0.2.1
+	dirección IPv4 del switch1 = 198.0.2.2
+	dirección IPv4 del switch2 = 198.0.2.3
+	dirección IPv4 del server = 198.0.2.4
+	dirección IPv4 del soporte = 198.0.2.5
+	dirección IPv4 de la coordinadora = 198.0.2.6
+	dirección IPv4 de la secretaria = 198.0.2.7
+	dirección IPv4 del director = 198.0.2.8
+	direcciones IPv4 por dhcp = desde la 198.0.2.9 hasta la 198.0.2.30
+
+vlsm = variable lenght subnet mask (mascara de subred de longitud variable)
+
+Paso 1. Identificar las propiedades de la dirección IPv4 por defecto.
+	198.0.2.0/24 (255.255.255.0) = 256 direcciones IPv4
+
+Paso 2. Identificar la necesidad de las red actual.
+	Equipos necesario: 30
+
+Paso 3. Modificar la máscara de subred, para ajustarle a las necesidades reales.
+	1. Tomar la porcion de la mascara de subred que se puede modificar.
+		.0
+	2. Convertir la porcion de la mascara de subred en binario.
+		00000000
+	3. Encender los bits necesario hasta que la máscara se ajuste al requerimiiento.
+		11100000
+	4. Convertir la porción de la máscara de subred modificada de bianario a decimal.
+		.224
+	5. Vuelvo a ensamblar la nueva máscara de subred.
+		255.255.255.224
+		/27
+
+red #1 (198.0.2.0 - 198.0.0.31)
+red #2 (198.0.2.32 - 198.0.0.63)
+red #1 (198.0.2.64 - 198.0.0.95)
+red #1 (198.0.2.96 - 198.0.0.227)
