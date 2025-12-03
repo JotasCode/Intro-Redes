@@ -4,17 +4,17 @@ en
 conf t
 no ip domain-lookup
 banner motd #Cuidao con lo que hace manito#
-hostname NOMBRE_DEL_DISPOSITIVO
-enable secret CONTRASEÑA(klk001#)
-username NOMBRE_DE_USUARIO(JotasCode) privilege 15 secret CONTRASEÑA(hola123@)
-ip domain-name dapiato.com
+hostname Dapiato-SD-R1
+enable secret klk001#
+username JotasCode privilege 15 secret hola123@
+ip domaian-name dapiato.com
 crypto key generate rsa
 1024
+ip ssh time-out 60
 ip ssh version 2
 ip ssh authentication-retries 3
-ip ssh time-out 60
 line con 0
-pass CONTRASEÑA(nba123)
+pass nba123
 logging synchronous 
 login local 
 line vty 0 15

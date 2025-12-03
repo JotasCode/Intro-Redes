@@ -14,7 +14,7 @@ Red Dapiato SD:
 	máscara de subred = 255.255.255.0 => 255.255.255.224
 	cantidad de direcciones ipv4 = 256 => 32
 	cantidad de equipos = 30
-	direccion IPv4 de red = 198.0.2.0
+	dirección IPv4 de red = 198.0.2.0
 	dirección IPv4 del broadcast = 198.0.2.31
 	dirección IPv4 disponibles = 30
 	dirección IPv4 del router = 198.0.2.1
@@ -36,17 +36,20 @@ Paso 2. Identificar la necesidad de las red actual.
 	Equipos necesario: 30
 
 Paso 3. Modificar la máscara de subred, para ajustarle a las necesidades reales.
-	1. Tomar la porcion de la mascara de subred que se puede modificar.
+	1. Tomar la porción de la mascara de subred que se puede modificar.
 		.0
-	2. Convertir la porcion de la mascara de subred en binario.
+	2. Convertir la porción de la mascara de subred en binario.
 		00000000
-	3. Encender los bits necesario hasta que la máscara se ajuste al requerimiiento.
+	3. Encender los bits necesario hasta que la máscara se ajuste al requerimiento.
 		11100000
 	4. Convertir la porción de la máscara de subred modificada de bianario a decimal.
 		.224
 	5. Vuelvo a ensamblar la nueva máscara de subred.
 		255.255.255.224
 		/27
+
+128	64	32	16	8	4	2	1	0
+1	1	1	1	1	1	1	1	1 = 256
 
 red #1 (198.0.2.0 - 198.0.0.31)
 red #2 (198.0.2.32 - 198.0.0.63)
