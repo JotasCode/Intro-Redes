@@ -51,29 +51,29 @@ Red Google.com:
 
 Red Dapiato-SD - Claro:
 	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.252
+	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
 	dirección IPv4 de red = 104.97.2.0
 	dirección IPv4 del broadcast = 104.97.2.3
 	dirección IPv4 disponibles = 2
 	dirección IPv4 del Dapiato-SD = 104.97.2.1
-	dirección IPv4 del Claro = 104.97.2.2
+	dirección IPv4 de Claro = 104.97.2.2
 
 Red Dapiato-Azua - Altice:
 	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.252
+	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
 	dirección IPv4 de red = 110.97.2.0
 	dirección IPv4 del broadcast = 110.97.2.3
 	dirección IPv4 disponibles = 2
 	dirección IPv4 del Dapiato-Azua = 110.97.2.1
-	dirección IPv4 del Altice = 110.97.2.2
+	dirección IPv4 de Altice = 110.97.2.2
 
 Red Claro - Nap-Caribe:
 	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0
+	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
 	dirección IPv4 de red = 50.1.0.0
@@ -84,7 +84,7 @@ Red Claro - Nap-Caribe:
 
 Red Altice - Nap-Caribe:
 	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0
+	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
 	dirección IPv4 de red = 100.5.2.0
@@ -95,7 +95,7 @@ Red Altice - Nap-Caribe:
 
 Red Nap-Caribe - Nap-USA:
 	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0
+	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
 	dirección IPv4 de red = 83.64.3.0
@@ -106,7 +106,7 @@ Red Nap-Caribe - Nap-USA:
 
 Red Nap-USA - Google.com:
 	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0
+	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
 	dirección IPv4 de red = 63.42.2.0

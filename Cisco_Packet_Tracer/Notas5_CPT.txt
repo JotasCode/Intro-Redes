@@ -1,0 +1,83 @@
+Comandos para agregar una dirección IP en una interfaz de red del router:
+	int(interface) nombre_interfaz
+	desc(description) 'mensaje o descripción sobre la conexión'
+	ip(interface_protocolo) add(agregate) direción_IP máscara_subred
+	no shut(no_apagar)
+	exit(salir) 
+	
+Ejemplo:
+	int g0/0(gigabit_ethernet)
+	desc Interfaz de red del LAN router
+	ip add 10.0.0.1 255.255.255.0
+	no shut 
+	exit
+
+Comandos para implementar el enrutamiento estático en routers cisco en el modo de configuración global:
+	Opción_1
+		ip route dirección_IP_red_destino mascara_subred_destino dirección_IP_interfaz_router_vecino
+
+	Opción_2
+		ip route dirección_IP_red_destino mascara_subred_destino dirección_interfaz_router_local
+
+Ejemplo:
+	Opción_1
+		ip route 172.0.100.0 255.255.192.0 100.0.5.2
+
+	Opción_2
+		ip route 172.0.100.0 255.255.192.0 g0/1
+
+Router Dapiato_SD:
+	Conoce:
+		Claro
+	No conoce:
+		Daipiato_Azua
+		Altice
+		NAP-Caribe
+		NAP-USA
+		Google
+
+ip route IP_red_Dapiato_Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
+ip route IP_red_Altice mascara_subred_Altice IP_interfaz_Claro
+ip route IP_red_NAP-Caribe mascara_subred_NAP-Caribe IP_interfaz_Claro
+ip route IP_red_NAP-USA mascara_subred_NAP-USA IP_interfaz_Claro
+ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Claro
+
+Configurando direccionamiento IP a los routers
+
+	Configuración modelo 
+		en
+		conf t
+		int nombre_interfaz
+		desc 'mensaje o descripción sobre la conexión'
+		ip add direción_IP máscara_subred
+		no shut
+		exit 
+		ip route IP_red_Dapiato_Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
+		end
+		copy run start
+		reload
+
+Configuración Dapiato_SD:
+		en
+		conf t
+		int g0/2
+		desc puerta de enlace predeterminada
+		ip add 198.0.2.0 255.255.255.224
+		no shut
+		exit 
+		int g0/0
+		desc conexión WAN entre la red Dapiato-SD y el ISP de Claro
+		ip route 200.0.2.0 255.255.255.224 104.97.2.2 Dapiato-Azua
+		ip route 110.97.2.0 255.255.255.252 104.97.2.2 Dapiato - Azua Altice
+		ip route 50.1.0.0 255.255.255.252 104.97.2.2 NAP-Caribe - Claro
+		ip route 100.5.2.0 255.255.255.252 104.97.2.2 NAP-Caribe - Altice
+		ip route 83.64.3.0 255.255.255.252 104.97.2.2 NAP-Caribe - nap-usa
+		ip route 63.42.2.0 255.255.255.252 104.97.2.2 NAP-USA - google
+		ip route 142.250.105.0 255.255.255.0 104.97.2.2 Google.com
+		end
+		copy run start
+		reload
+
+show run
+
+
