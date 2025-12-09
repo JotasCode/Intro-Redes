@@ -43,7 +43,6 @@ ip route IP_red_NAP-USA mascara_subred_NAP-USA IP_interfaz_Claro
 ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Claro
 
 Configurando direccionamiento IP a los routers
-
 	Configuración modelo 
 		en
 		conf t
@@ -57,16 +56,18 @@ Configurando direccionamiento IP a los routers
 		copy run start
 		reload
 
-Configuración Dapiato_SD:
+Configuración Dapiato-SD:
 		en
 		conf t
 		int g0/2
-		desc puerta de enlace predeterminada
+		desc Puerta de enlace predeterminada
 		ip add 198.0.2.0 255.255.255.224
 		no shut
 		exit 
 		int g0/0
-		desc conexión WAN entre la red Dapiato-SD y el ISP de Claro
+		en
+		conf t
+		desc Conexion WAN entre la red Dapiato-SD y el ISP de Claro
 		ip route 200.0.2.0 255.255.255.224 104.97.2.2 Dapiato-Azua
 		ip route 110.97.2.0 255.255.255.252 104.97.2.2 Dapiato - Azua Altice
 		ip route 50.1.0.0 255.255.255.252 104.97.2.2 NAP-Caribe - Claro
@@ -77,7 +78,54 @@ Configuración Dapiato_SD:
 		end
 		copy run start
 		reload
+show run
 
+Configuración Claro:
+		en
+		conf t
+		int g0/0
+		desc Puerta de enlace predeterminada
+		ip add 142.250.105.0 255.255.255.0
+		no shut
+		exit 
+		en
+		conf t
+		int g0/1
+		desc Conexion WAN entre el ISP de Claro y el NAP del Caribe
+		ip route 200.0.2.0 255.255.255.224 104.97.2.2 Dapiato-Azua
+		ip route 110.97.2.0 255.255.255.252 104.97.2.2 Dapiato-Azua - Altice
+		ip route 50.1.0.0 255.255.255.252 104.97.2.2 NAP-Caribe - Claro
+		ip route 100.5.2.0 255.255.255.252 104.97.2.2 NAP-Caribe - Altice
+		ip route 83.64.3.0 255.255.255.252 104.97.2.2 NAP-Caribe - nap-usa
+		ip route 63.42.2.0 255.255.255.252 104.97.2.2 NAP-USA - google
+		ip route 142.250.105.0 255.255.255.0 104.97.2.2 Google.com
+		end
+		copy run start
+		reload
+show run
+
+Configuración NAP-Caribe:
+		en
+		conf t
+		int g0/1
+		desc Puerta de enlace predeterminada
+		ip add 142.250.105.0 255.255.255.0
+		no shut
+		exit 
+		en
+		conf t
+		int g0/2
+		desc Conexion WAN entre el ISP de Claro y el NAP del Caribe
+		ip route 200.0.2.0 255.255.255.224 104.97.2.2 Dapiato-Azua
+		ip route 110.97.2.0 255.255.255.252 104.97.2.2 Dapiato-Azua - Altice
+		ip route 50.1.0.0 255.255.255.252 104.97.2.2 NAP-Caribe - Claro
+		ip route 100.5.2.0 255.255.255.252 104.97.2.2 NAP-Caribe - Altice
+		ip route 83.64.3.0 255.255.255.252 104.97.2.2 NAP-Caribe - nap-usa
+		ip route 63.42.2.0 255.255.255.252 104.97.2.2 NAP-USA - google
+		ip route 142.250.105.0 255.255.255.0 104.97.2.2 Google.com
+		end
+		copy run start
+		reload
 show run
 
 
