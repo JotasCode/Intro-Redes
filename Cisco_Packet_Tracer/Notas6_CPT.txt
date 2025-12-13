@@ -73,25 +73,6 @@ G0/1		(Hacia SW-Adm)		192.168.20.1 192.168.20.0/24	Gateway Adm
 G0/2		(Hacia Server)		192.168.200.1 192.168.200.0/29	Gateway Server
 G0/3		(Hacia Claro-SD)	10.10.1.1 10.10.1.0/30Enlace	WAN
 
-
-Red Dapiato SD:
-	prefijo de red = /24 => /27
-	máscara de subred = 255.255.255.0 => 255.255.255.224
-	cantidad de direcciones ipv4 = 256 => 32
-	cantidad de equipos = 30
-	dirección IPv4 de red = 198.0.2.0
-	dirección IPv4 del broadcast = 198.0.2.31
-	dirección IPv4 disponibles = 30
-	dirección IPv4 del router = 198.0.2.1
-	dirección IPv4 del switch1 = 198.0.2.2
-	dirección IPv4 del switch2 = 198.0.2.3
-	dirección IPv4 del server = 198.0.2.4
-	dirección IPv4 del soporte = 198.0.2.5
-	dirección IPv4 de la coordinadora = 198.0.2.6
-	dirección IPv4 de la secretaria = 198.0.2.7
-	dirección IPv4 del director = 198.0.2.8
-	direcciones IPv4 por dhcp = desde la 198.0.2.9 hasta la 198.0.2.30
-
 vlsm = variable lenght subnet mask (mascara de subred de longitud variable)
 
 Paso 1. Identificar las propiedades de la dirección IPv4 por defecto.
@@ -146,6 +127,24 @@ Subred:
 Superred:
 	255.255.192.0 /18
 
+Red Dapiato SD:
+	prefijo de red = /24 => /27
+	máscara de subred = 255.255.255.0 => 255.255.255.224
+	cantidad de direcciones ipv4 = 256 => 32
+	cantidad de equipos = 30
+	dirección IPv4 de red = 198.0.2.0
+	dirección IPv4 del broadcast = 198.0.2.31
+	dirección IPv4 disponibles = 30
+	dirección IPv4 del router = 198.0.2.1
+	dirección IPv4 del switch1 = 198.0.2.2
+	dirección IPv4 del switch2 = 198.0.2.3
+	dirección IPv4 del server = 198.0.2.4
+	dirección IPv4 del soporte = 198.0.2.5
+	dirección IPv4 de la coordinadora = 198.0.2.6
+	dirección IPv4 de la secretaria = 198.0.2.7
+	dirección IPv4 del director = 198.0.2.8
+	direcciones IPv4 por dhcp = desde la 198.0.2.9 hasta la 198.0.2.30
+
 Red Dapiato Azua:
 	prefijo de red = /24 => /27
 	máscara de subred = 255.255.255.0 => 255.255.255.224
@@ -163,18 +162,6 @@ Red Dapiato Azua:
 	dirección IPv4 de la secretaria = 200.0.2.7
 	dirección IPv4 del director = 200.0.2.8
 	direcciones IPv4 por dhcp = desde la 200.0.2.9 hasta la 200.0.2.30
-
-Red Google:
-	prefijo de red = /24
-	máscara de subred = 255.255.255.0
-	cantidad de direcciones ipv4 = 256
-	cantidad de equipos = 254
-	dirección IPv4 de red = 142.250.105.0
-	dirección IPv4 del broadcast = 142.250.105.255
-	dirección IPv4 disponibles = 254
-	dirección IPv4 del router = 142.250.105.1
-	dirección IPv4 del switch = 142.250.105.2
-	direcciones IPv4 por dhcp = desde la 142.250.105.3 hasta la 142.250.105.254
 
 Red Dapiato-SD - Claro:
 	prefijo de red = /24 => 30
@@ -247,33 +234,57 @@ Red NAP-USA - Atlanta:
 	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
-	dirección IPv4 de red = 69.50.3.0
-	dirección IPv4 del broadcast = 69.50.3.3
+	dirección IPv4 de red = 70.30.2.0
+	dirección IPv4 del broadcast = 70.30.2.3
 	dirección IPv4 disponibles = 2
-	dirección IPv4 del Nap-USA = 69.50.3.1
-	dirección IPv4 de Atlanta = 69.50.3.2
+	dirección IPv4 del Nap-USA = 70.30.2.1
+	dirección IPv4 de Atlanta = 70.30.2.2
 
 Red San-Francisco - Google:
 	prefijo de red = /24 => 30
 	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
-	dirección IPv4 de red = 75.25.4.0
-	dirección IPv4 del broadcast = 75.25.4.3
+	dirección IPv4 de red = 65.200.0.0
+	dirección IPv4 del broadcast = 65.200.0.3
 	dirección IPv4 disponibles = 2
-	dirección IPv4 del Nap-USA = 75.25.4.1
-	dirección IPv4 de Atlanta = 75.25.4.2
+	dirección IPv4 del Nap-USA = 65.200.0.1
+	dirección IPv4 de Atlanta = 65.200.0.2
 
 Red Atlanta - Meta:
 	prefijo de red = /24 => 30
 	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
-	dirección IPv4 de red = 80.43.4.0
-	dirección IPv4 del broadcast = 80.43.4.3
+	dirección IPv4 de red = 30.60.1.0
+	dirección IPv4 del broadcast = 30.60.1.3
 	dirección IPv4 disponibles = 2
-	dirección IPv4 del Nap-USA = 80.43.4.1
-	dirección IPv4 de Atlanta = 80.43.4.2
+	dirección IPv4 del Nap-USA = 30.60.1.1
+	dirección IPv4 de Atlanta = 30.60.1.2
+
+Red Google:
+	prefijo de red = /24
+	máscara de subred = 255.255.255.0
+	cantidad de direcciones ipv4 = 256
+	cantidad de equipos = 254
+	dirección IPv4 de red = 142.250.105.0
+	dirección IPv4 del broadcast = 142.250.105.255
+	dirección IPv4 disponibles = 254
+	dirección IPv4 del router = 142.250.105.1
+	dirección IPv4 del switch = 142.250.105.2
+	direcciones IPv4 por dhcp = desde la 142.250.105.3 hasta la 142.250.105.254
+
+Red Meta:
+	prefijo de red = /24
+	máscara de subred = 255.255.255.0
+	cantidad de direcciones ipv4 = 256
+	cantidad de equipos = 254
+	dirección IPv4 de red = 57.144.132.0
+	dirección IPv4 del broadcast = 57.144.132.255
+	dirección IPv4 disponibles = 254
+	dirección IPv4 del router = 57.144.132.1
+	dirección IPv4 del switch = 57.144.132.2
+	direcciones IPv4 por dhcp = desde la 57.144.132.3 hasta la 57.144.132.254
 
 Fase #1 - Planeamiento
 Fase #2 - Direccionamiento
