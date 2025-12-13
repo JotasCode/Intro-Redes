@@ -164,7 +164,7 @@ Red Dapiato Azua:
 	dirección IPv4 del director = 200.0.2.8
 	direcciones IPv4 por dhcp = desde la 200.0.2.9 hasta la 200.0.2.30
 
-Red Google.com:
+Red Google:
 	prefijo de red = /24
 	máscara de subred = 255.255.255.0
 	cantidad de direcciones ipv4 = 256
@@ -173,7 +173,7 @@ Red Google.com:
 	dirección IPv4 del broadcast = 142.250.105.255
 	dirección IPv4 disponibles = 254
 	dirección IPv4 del router = 142.250.105.1
-	dirección IPv4 del switch1 = 142.250.105.2
+	dirección IPv4 del switch = 142.250.105.2
 	direcciones IPv4 por dhcp = desde la 142.250.105.3 hasta la 142.250.105.254
 
 Red Dapiato-SD - Claro:
@@ -184,7 +184,7 @@ Red Dapiato-SD - Claro:
 	dirección IPv4 de red = 104.97.2.0
 	dirección IPv4 del broadcast = 104.97.2.3
 	dirección IPv4 disponibles = 2
-	dirección IPv4 del Dapiato-SD = 104.97.2.1
+	dirección IPv4 de Dapiato-SD = 104.97.2.1
 	dirección IPv4 de Claro = 104.97.2.2
 
 Red Dapiato-Azua - Altice:
@@ -195,10 +195,10 @@ Red Dapiato-Azua - Altice:
 	dirección IPv4 de red = 110.97.2.0
 	dirección IPv4 del broadcast = 110.97.2.3
 	dirección IPv4 disponibles = 2
-	dirección IPv4 del Dapiato-Azua = 110.97.2.1
+	dirección IPv4 de Dapiato-Azua = 110.97.2.1
 	dirección IPv4 de Altice = 110.97.2.2
 
-Red Claro - Nap-Caribe:
+Red Claro - NAP-Caribe:
 	prefijo de red = /24 => 30
 	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
@@ -206,10 +206,10 @@ Red Claro - Nap-Caribe:
 	dirección IPv4 de red = 50.1.0.0
 	dirección IPv4 del broadcast = 50.1.0.3
 	dirección IPv4 disponibles = 2
-	dirección IPv4 del Claro = 50.1.0.1
-	dirección IPv4 del Nap-Caribe = 50.1.0.2
+	dirección IPv4 de Claro = 50.1.0.1
+	dirección IPv4 del NAP-Caribe = 50.1.0.2
 
-Red Altice - Nap-Caribe:
+Red Altice - NAP-Caribe:
 	prefijo de red = /24 => 30
 	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
@@ -217,10 +217,10 @@ Red Altice - Nap-Caribe:
 	dirección IPv4 de red = 100.5.2.0
 	dirección IPv4 del broadcast = 100.5.2.3
 	dirección IPv4 disponibles = 2
-	dirección IPv4 del Altice = 100.5.2.1
-	dirección IPv4 del Nap-Caribe = 100.5.2.2
+	dirección IPv4 de Altice = 100.5.2.1
+	dirección IPv4 del NAP-Caribe = 100.5.2.2
 
-Red Nap-Caribe - Nap-USA:
+Red NAP-Caribe - NAP-USA:
 	prefijo de red = /24 => 30
 	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
@@ -228,19 +228,52 @@ Red Nap-Caribe - Nap-USA:
 	dirección IPv4 de red = 83.64.3.0
 	dirección IPv4 del broadcast = 3.64.3.3
 	dirección IPv4 disponibles = 2
-	dirección IPv4 del Nap-Caribe = 83.64.3.1
-	dirección IPv4 del Nap-USA = 83.64.3.2
+	dirección IPv4 del NAP-Caribe = 83.64.3.1
+	dirección IPv4 del NAP-USA = 83.64.3.2
 
-Red Nap-USA - Google.com:
+Red NAP-USA - San-Francisco:
 	prefijo de red = /24 => 30
 	máscara de subred = 255.255.255.0 => 255.255.255.252
 	cantidad de direcciones ipv4 = 4
 	cantidad de equipos = 2
 	dirección IPv4 de red = 63.42.2.0
-	dirección IPv4 del broadcast = 63.42.2.0
+	dirección IPv4 del broadcast = 63.42.2.3
 	dirección IPv4 disponibles = 2
-	dirección IPv4 del Nap-USA = 63.42.2.1
-	dirección IPv4 del Google.com = 63.42.2.2
+	dirección IPv4 del NAP-USA = 63.42.2.1
+	dirección IPv4 de San-Francisco = 63.42.2.2
+
+Red NAP-USA - Atlanta:
+	prefijo de red = /24 => 30
+	máscara de subred = 255.255.255.0 => 255.255.255.252
+	cantidad de direcciones ipv4 = 4
+	cantidad de equipos = 2
+	dirección IPv4 de red = 69.50.3.0
+	dirección IPv4 del broadcast = 69.50.3.3
+	dirección IPv4 disponibles = 2
+	dirección IPv4 del Nap-USA = 69.50.3.1
+	dirección IPv4 de Atlanta = 69.50.3.2
+
+Red San-Francisco - Google:
+	prefijo de red = /24 => 30
+	máscara de subred = 255.255.255.0 => 255.255.255.252
+	cantidad de direcciones ipv4 = 4
+	cantidad de equipos = 2
+	dirección IPv4 de red = 75.25.4.0
+	dirección IPv4 del broadcast = 75.25.4.3
+	dirección IPv4 disponibles = 2
+	dirección IPv4 del Nap-USA = 75.25.4.1
+	dirección IPv4 de Atlanta = 75.25.4.2
+
+Red Atlanta - Meta:
+	prefijo de red = /24 => 30
+	máscara de subred = 255.255.255.0 => 255.255.255.252
+	cantidad de direcciones ipv4 = 4
+	cantidad de equipos = 2
+	dirección IPv4 de red = 80.43.4.0
+	dirección IPv4 del broadcast = 80.43.4.3
+	dirección IPv4 disponibles = 2
+	dirección IPv4 del Nap-USA = 80.43.4.1
+	dirección IPv4 de Atlanta = 80.43.4.2
 
 Fase #1 - Planeamiento
 Fase #2 - Direccionamiento
