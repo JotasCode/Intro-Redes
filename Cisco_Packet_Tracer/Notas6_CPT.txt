@@ -32,16 +32,16 @@ Nota 2. Para salir de un modo y volver al modo anterior , usamos el comando "exi
 NOTAS 2
 
 
-Configuracion basica para todos los equipos en este lab (Switch y Routers)
+Configuración basica para todos los equipos en este lab (Switch y Routers)
 
 en
 conf t
 no ip domain-lookup
 banner motd #Cuidao con lo que hace manito#
-hostname Dapiato-SD-R1
-enable secret klk001#
-username JotasCode privilege 15 secret hola123@
-ip domaian-name dapiato.com
+hostname NOMBRE_DEL_DISPOSITIVO
+enable secret klk001#(CONTRASEÑA)
+username JotasCode(NOMBRE_DEL_USUARIO) privilege 15 secret hola123@(CONTRASEÑA)
+ip domain-name DOMINIO.COM
 crypto key generate rsa
 1024
 ip ssh time-out 60
@@ -118,8 +118,8 @@ Paso 3. Modificar la máscara de subred, para ajustarle a las necesidades reales
 
 red #1 (198.0.2.0 - 198.0.0.31)
 red #2 (198.0.2.32 - 198.0.0.63)
-red #1 (198.0.2.64 - 198.0.0.95)
-red #1 (198.0.2.96 - 198.0.0.227)
+red #3 (198.0.2.64 - 198.0.0.95)
+red #4 (198.0.2.96 - 198.0.0.227)
 
 
 NOTAS 4
@@ -304,7 +304,7 @@ Configurando direccionamiento IP a los routers
 		ip add direción_IP máscara_subred
 		no shut
 		exit 
-		ip route IP_red_Dapiato_Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
+		ip route dirección_IP_red_destino mascara_subred_destino dirección_interfaz_router_loca
 		end
 		copy run start
 		reload
@@ -318,13 +318,13 @@ Configuración Dapiato-SD:
 		no shut
 		exit 
 		int g0/0
-		desc conexión WAN entre la red Dapiato-SD y el ISP de Claro
+		desc conexion WAN entre la red Dapiato-SD y el ISP de Claro
 		ip route 200.0.2.0 255.255.255.224 104.97.2.2 Dapiato-Azua
-		ip route 110.97.2.0 255.255.255.252 104.97.2.2 Dapiato - Azua Altice
+		ip route 110.97.2.0 255.255.255.252 104.97.2.2 Dapiato-Azua - Altice
 		ip route 50.1.0.0 255.255.255.252 104.97.2.2 NAP-Caribe - Claro
 		ip route 100.5.2.0 255.255.255.252 104.97.2.2 NAP-Caribe - Altice
-		ip route 83.64.3.0 255.255.255.252 104.97.2.2 NAP-Caribe - nap-usa
-		ip route 63.42.2.0 255.255.255.252 104.97.2.2 NAP-USA - google
+		ip route 83.64.3.0 255.255.255.252 104.97.2.2 NAP-Caribe - NAP-USA
+		ip route 63.42.2.0 255.255.255.252 104.97.2.2 NAP-USA - Google
 		ip route 142.250.105.0 255.255.255.0 104.97.2.2 Google.com
 		end
 		copy run start
@@ -336,6 +336,70 @@ NOTAS 6
 
 
 Configuración Claro:
+		en
+		conf t
+		int g0/0
+		desc puerta de enlace predeterminada
+		ip add 142.250.105.0 255.255.255.0
+		no shut
+		exit 
+		int g0/1
+		desc conexion WAN entre el ISP de Claro y el NAP del Caribe
+		ip route 200.0.2.0 255.255.255.224 50.1.0.2 Dapiato-Azua
+		ip route 110.97.2.0 255.255.255.252 50.1.0.2 Dapiato-Azua - Altice
+		ip route 50.1.0.0 255.255.255.252 50.1.0.2 NAP-Caribe - Claro
+		ip route 100.5.2.0 255.255.255.252 50.1.0.2 NAP-Caribe - Altice
+		ip route 83.64.3.0 255.255.255.252 50.1.0.2 NAP-Caribe - NAP-USA
+		ip route 63.42.2.0 255.255.255.252 50.1.0.2 NAP-USA - Google
+		ip route 142.250.105.0 255.255.255.0 50.1.0.2 Google.com
+		end
+		copy run start
+		reload
+show run
+
+Configuración Dapiato-Azua:
+		en
+		conf t
+		int g0/1
+		desc puerta de enlace predeterminada
+		ip add 200.0.2.0 255.255.255.224
+		no shut
+		exit 
+		int g0/0
+		desc conexion WAN entre la red Dapiato-Azua y el ISP de Altice
+		ip route 198.0.2.0 255.255.255.224 110.97.2.2 Dapiato-SD
+		ip route 104.97.2.0 255.255.255.252 110.97.2.2 Dapiato-SD - Claro
+		ip route 50.1.0.0 255.255.255.252 110.97.2.2 Claro - NAP-Caribe
+		ip route 100.5.2.0 255.255.255.252 110.97.2.2 NAP-Caribe - Altice
+		ip route 83.64.3.0 255.255.255.252 110.97.2.2 NAP-Caribe - NAP-USA
+		ip route 63.42.2.0 255.255.255.252 110.97.2.2 NAP-USA - google
+		ip route 142.250.105.0 255.255.255.0 110.97.2.2 Google.com
+		end
+		copy run start
+		reload
+show run
+
+Configuración Altice:
+		en
+		conf t
+		int g0/0
+		desc puerta de enlace predeterminada
+		ip add 100.5.2.0 255.255.255.0
+		no shut
+		exit 
+		int g0/2
+		desc conexion WAN entre el ISP de Altice y el NAP del Caribe
+		ip route 198.0.2.0 255.255.255.224 100.5.2.2 Dapiato-SD
+		ip route 104.97.2.0 255.255.255.252 100.5.2.2 Dapiato-SD - Claro
+		ip route 50.1.0.0 255.255.255.252 100.5.2.2 NAP-Caribe - Claro
+		ip route 100.5.2.0 255.255.255.252 100.5.2.2 NAP-Caribe - Altice
+		ip route 83.64.3.0 255.255.255.252 100.5.2.2 NAP-Caribe - NAP-USA
+		ip route 63.42.2.0 255.255.255.252 100.5.2.2 NAP-USA - Google
+		ip route 142.250.105.0 255.255.255.0 100.5.2.2 Google.com
+		end
+		copy run start
+		reload
+show run
 
 
 
