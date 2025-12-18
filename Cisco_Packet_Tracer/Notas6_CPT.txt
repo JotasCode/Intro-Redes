@@ -127,7 +127,7 @@ Subred:
 Superred:
 	255.255.192.0 /18
 
-Red Dapiato SD:
+Red Dapiato-SD:
 	prefijo de red = /24 => /27
 	máscara de subred = 255.255.255.0 => 255.255.255.224
 	cantidad de direcciones ipv4 = 256 => 32
@@ -145,7 +145,7 @@ Red Dapiato SD:
 	dirección IPv4 del director = 198.0.2.8
 	direcciones IPv4 por dhcp = desde la 198.0.2.9 hasta la 198.0.2.30
 
-Red Dapiato Azua:
+Red Dapiato-Azua:
 	prefijo de red = /24 => /27
 	máscara de subred = 255.255.255.0 => 255.255.255.224
 	cantidad de direcciones ipv4 = 256 => 32
