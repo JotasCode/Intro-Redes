@@ -332,11 +332,18 @@ Router Dapiato_SD:
 		NAP-USA
 		Google
 
-ip route IP_red_Dapiato_Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
-ip route IP_red_Altice mascara_subred_Altice IP_interfaz_Claro
-ip route IP_red_NAP-Caribe mascara_subred_NAP-Caribe IP_interfaz_Claro
-ip route IP_red_NAP-USA mascara_subred_NAP-USA IP_interfaz_Claro
+ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
+ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Claro
+ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_Claro
+ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_Claro
+ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_Claro
+ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_Claro
+ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_Claro
+ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_Claro
+ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_Claro
 ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Claro
+ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Claro
+ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Claro
 
 Configurando direccionamiento IP a los routers
 
@@ -356,14 +363,25 @@ Configurando direccionamiento IP a los routers
 Configuración Dapiato-SD:
 		en
 		conf t
-		int g0/2
+		int g0/1
 		desc puerta de enlace predeterminada
 		ip add 198.0.2.0 255.255.255.224
 		no shut
 		exit 
-		int g0/0
+		int g0/2
 		desc conexion WAN entre la red Dapiato-SD y el ISP de Claro
-		ip route dirección_IP_red_destino mascara_subred_destino dirección_interfaz_router_loca
+		ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
+		ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Claro
+		ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_Claro
+		ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_Claro
+		ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_Claro
+		ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_Claro
+		ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_Claro
+		ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_Claro
+		ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_Claro
+		ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Claro
+		ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Claro
+		ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Claro
 		end
 		copy run start
 		reload
