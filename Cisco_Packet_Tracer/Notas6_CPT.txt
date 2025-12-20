@@ -272,7 +272,8 @@ Red Google:
 	dirección IPv4 disponibles = 254
 	dirección IPv4 del router = 142.250.105.1
 	dirección IPv4 del switch = 142.250.105.2
-	direcciones IPv4 por dhcp = desde la 142.250.105.3 hasta la 142.250.105.254
+	dirección IPv4 del server = 142.250.105.3
+	direcciones IPv4 por dhcp = desde la 142.250.105.4 hasta la 142.250.105.254
 
 Red Meta:
 	prefijo de red = /24
@@ -284,7 +285,8 @@ Red Meta:
 	dirección IPv4 disponibles = 254
 	dirección IPv4 del router = 57.144.132.1
 	dirección IPv4 del switch = 57.144.132.2
-	direcciones IPv4 por dhcp = desde la 57.144.132.3 hasta la 57.144.132.254
+	dirección IPv4 del server = 57.144.132.3
+	direcciones IPv4 por dhcp = desde la 57.144.132.4 hasta la 57.144.132.254
 
 Fase #1 - Planeamiento
 Fase #2 - Direccionamiento
@@ -330,7 +332,28 @@ Router Dapiato_SD:
 		Altice
 		NAP-Caribe
 		NAP-USA
+		San-Francisco
 		Google
+		Atlanta
+		Meta
+
+Configurando direccionamiento IP a los routers
+
+	Configuración modelo 
+		en
+		conf t
+		int nombre_interfaz
+		desc 'mensaje o descripción sobre la conexión'
+		ip add direción_IP máscara_subred
+		no shut
+		exit 
+		int nombre_interfaz
+		desc 'mensaje o descripción sobre la conexión'
+		ip add direción_IP máscara_subred
+		ip route dirección_IP_red_destino mascara_subred_destino dirección_interfaz_router_loca
+		end
+		copy run start
+		reload
 
 ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
 ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Claro
@@ -345,43 +368,92 @@ ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Claro
 ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Claro
 ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Claro
 
-Configurando direccionamiento IP a los routers
-
-	Configuración modelo 
-		en
-		conf t
-		int nombre_interfaz
-		desc 'mensaje o descripción sobre la conexión'
-		ip add direción_IP máscara_subred
-		no shut
-		exit 
-		ip route dirección_IP_red_destino mascara_subred_destino dirección_interfaz_router_loca
-		end
-		copy run start
-		reload
-
 Configuración Dapiato-SD:
 		en
 		conf t
 		int g0/1
 		desc puerta de enlace predeterminada
-		ip add 198.0.2.0 255.255.255.224
+		ip add 198.0.2.1 255.255.255.224
 		no shut
 		exit 
 		int g0/2
 		desc conexion WAN entre la red Dapiato-SD y el ISP de Claro
-		ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
-		ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Claro
-		ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_Claro
-		ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_Claro
-		ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_Claro
-		ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_Claro
-		ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_Claro
-		ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_Claro
-		ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_Claro
-		ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Claro
-		ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Claro
-		ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Claro
+		ip add 104.97.2.1 255.255.255.252
+		ip route 200.0.2.0 255.255.255.224 104.97.2.2
+		int g0/2
+		ip route 110.97.2.0 255.255.255.252 104.97.2.2
+		int g0/2
+		ip route 100.5.2.0 255.255.255.252 104.97.2.2
+		int g0/2
+		ip route 83.64.3.0 255.255.255.252 104.97.2.2
+		int g0/2
+		ip route 70.30.2.0 255.255.255.252 104.97.2.2
+		int g0/2
+		ip route 30.60.1.0 255.255.255.252 104.97.2.2
+		int g0/2
+		ip route 57.144.132.0 255.255.255.0 104.97.2.2
+		int g0/2
+		ip route 63.42.2.0 255.255.255.252 104.97.2.2
+		int g0/2
+		ip route 65.200.0.0 255.255.255.252 104.97.2.2
+		int g0/2
+		ip route 142.250.105.0 255.255.255.0 104.97.2.2
+		int g0/2
+		ip route 50.1.0.0 255.255.255.252 104.97.2.2
+		int g0/2
+		ip route 104.97.2.0 255.255.255.252 104.97.2.2
+		end
+		copy run start
+		reload
+show run
+
+ip route IP_red_Dapiato-SD mascara_subred_Dapiato_Azua IP_interfaz_Altice
+ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Altice
+ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Altice
+ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_Altice
+ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_Altice
+ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_Altice
+ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Altice
+ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_Altice
+ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_Altice
+ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_Altice
+ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_Altice
+ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Altice
+
+Configuración Dapiato-Azua:
+		en
+		conf t
+		int g0/1
+		desc puerta de enlace predeterminada
+		ip add 200.0.2.1 255.255.255.224
+		no shut
+		exit 
+		int g0/2
+		desc conexion WAN entre la red Dapiato-Azua y el ISP de Altice
+		ip add 110.97.2.1 255.255.255.252
+		ip route 198.0.2.0 255.255.255.224 110.97.2.2
+		int g0/2
+		ip route 104.97.2.0 255.255.255.252 110.97.2.2
+		int g0/2
+		ip route 50.1.0.0 255.255.255.252 110.97.2.2
+		int g0/2
+		ip route 83.64.3.0 255.255.255.252 110.97.2.2
+		int g0/2
+		ip route 63.42.2.0 255.255.255.252 110.97.2.2
+		int g0/2
+		ip route 65.200.0.0 255.255.255.252 110.97.2.2
+		int g0/2
+		ip route 142.250.105.0 255.255.255.0 110.97.2.2
+		int g0/2
+		ip route 70.30.2.0 255.255.255.252 110.97.2.2
+		int g0/2
+		ip route 30.60.1.0 255.255.255.252 110.97.2.2
+		int g0/2
+		ip route 57.144.132.0 255.255.255.0 110.97.2.2
+		int g0/2
+		ip route 100.5.2.0 255.255.255.252 110.97.2.2
+		int g0/2
+		ip route 110.97.2.0 255.255.255.252 110.97.2.2
 		end
 		copy run start
 		reload
