@@ -26,6 +26,13 @@ Configuración básica para los switches y routers:
 
 
 
+Comando para eliminar configuración:
+	en
+	erase startup-config
+	reload
+
+
+
 Redes:
 	Red Dapiato-SD:
 		prefijo de red = /24 => /27
