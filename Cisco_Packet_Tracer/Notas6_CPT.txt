@@ -1,466 +1,353 @@
-NOTAS 1
-
-
-CISCO IOS: nombre del sistema operativo.
-Nodos:
-	1. usuario
-		simbolo-representación: >
-		comando N/A
-	2. privilegiado
-		simbolo-representación: #
-		comando: enable
-		abreviatura: en
-	3. configuracion global
-		simbolo-representación: (config)# 
-		comando: configure: terminal
-		abreviatura: conf t
-	4. configuracion de interfaz
-		simbolo-representación: (config-if)#
-		comando: interface nombre-interfaz
-		abrerviatura: int nombre-abreviado
-	5. configuracion de linea
-		simbolo-representación: (config-line)
-		comando: line nombre-linea id-linea
-		abrebiaruta: li nombre-abreviado id-linea
-
-Nota 1. Cada modo de operacion, tiene un grupo de  comando que solo se pueden ejecutar dentro de dicho nodo. 
-
-Nota 2. Para salir de un modo y volver al modo anterior , usamos el comando "exit", y para salir de un modo e ir directamente al modo privilegiado, usamos el comando "end".
+Configuración básica para los switches y routers:
+	en
+	conf t
+	no ip domain-lookup
+	banner motd #Cuidao con lo que hace manito#
+	hostname NOMBRE_DEL_DISPOSITIVO
+	enable secret klk001#(CONTRASEÑA)
+	username JotasCode(NOMBRE_DEL_USUARIO) privilege 15 secret hola123@(CONTRASEÑA)
+	ip domain-name DOMINIO.COM
+	crypto key generate rsa
+	1024
+	ip ssh time-out 60
+	ip ssh version 2
+	ip ssh authentication-retries 3
+	line con 0
+	pass nba123
+	logging synchronous 
+	login local 
+	line vty 0 15
+	logging synchronous 
+	transport input ssh
+	no transport input telnet
+	end
+	copy running-config startup-config
+	reload 
 
 
 
-NOTAS 2
+Redes:
+	Red Dapiato-SD:
+		prefijo de red = /24 => /27
+		máscara de subred = 255.255.255.0 => 255.255.255.224
+		cantidad de direcciones ipv4 = 256 => 32
+		cantidad de equipos = 30
+		dirección IPv4 de red = 198.0.2.0
+		dirección IPv4 del broadcast = 198.0.2.31
+		dirección IPv4 disponibles = 30
+		dirección IPv4 del router = 198.0.2.1
+		dirección IPv4 del switch1 = 198.0.2.2
+		dirección IPv4 del switch2 = 198.0.2.3
+		dirección IPv4 del server = 198.0.2.4
+		dirección IPv4 del soporte = 198.0.2.5
+		dirección IPv4 de la coordinadora = 198.0.2.6
+		dirección IPv4 de la secretaria = 198.0.2.7
+		dirección IPv4 del director = 198.0.2.8
+		direcciones IPv4 por dhcp = desde la 198.0.2.9 hasta la 198.0.2.30
 
+	Red Dapiato-Azua:
+		prefijo de red = /24 => /27
+		máscara de subred = 255.255.255.0 => 255.255.255.224
+		cantidad de direcciones ipv4 = 256 => 32
+		cantidad de equipos = 30
+		dirección IPv4 de red = 200.0.2.0
+		dirección IPv4 del broadcast = 200.0.2.31
+		dirección IPv4 disponibles = 30
+		dirección IPv4 del router = 200.0.2.1
+		dirección IPv4 del switch1 = 200.0.2.2
+		dirección IPv4 del switch2 = 200.0.2.3
+		dirección IPv4 del server = 200.0.2.4
+		dirección IPv4 del soporte = 200.0.2.5
+		dirección IPv4 de la coordinadora = 200.0.2.6
+		dirección IPv4 de la secretaria = 200.0.2.7
+		dirección IPv4 del director = 200.0.2.8
+		direcciones IPv4 por dhcp = desde la 200.0.2.9 hasta la 200.0.2.30
 
-Configuración basica para todos los equipos en este lab (Switch y Routers)
+	Red Dapiato-SD - Claro:
+		prefijo de red = /24 => 30
+		máscara de subred = 255.255.255.0 => 255.255.255.252
+		cantidad de direcciones ipv4 = 4
+		cantidad de equipos = 2
+		dirección IPv4 de red = 104.97.2.0
+		dirección IPv4 del broadcast = 104.97.2.3
+		dirección IPv4 disponibles = 2
+		dirección IPv4 de Dapiato-SD = 104.97.2.1
+		dirección IPv4 de Claro = 104.97.2.2
 
-en
-conf t
-no ip domain-lookup
-banner motd #Cuidao con lo que hace manito#
-hostname NOMBRE_DEL_DISPOSITIVO
-enable secret klk001#(CONTRASEÑA)
-username JotasCode(NOMBRE_DEL_USUARIO) privilege 15 secret hola123@(CONTRASEÑA)
-ip domain-name DOMINIO.COM
-crypto key generate rsa
-1024
-ip ssh time-out 60
-ip ssh version 2
-ip ssh authentication-retries 3
-line con 0
-pass nba123
-logging synchronous 
-login local 
-line vty 0 15
-logging synchronous 
-transport input ssh
-no transport input telnet
-end
-copy running-config startup-config
-reload 
+	Red Dapiato-Azua - Altice:
+		prefijo de red = /24 => 30
+		máscara de subred = 255.255.255.0 => 255.255.255.252
+		cantidad de direcciones ipv4 = 4
+		cantidad de equipos = 2
+		dirección IPv4 de red = 110.97.2.0
+		dirección IPv4 del broadcast = 110.97.2.3
+		dirección IPv4 disponibles = 2
+		dirección IPv4 de Dapiato-Azua = 110.97.2.1
+		dirección IPv4 de Altice = 110.97.2.2
 
+	Red Claro - NAP-Caribe:
+		prefijo de red = /24 => 30
+		máscara de subred = 255.255.255.0 => 255.255.255.252
+		cantidad de direcciones ipv4 = 4
+		cantidad de equipos = 2
+		dirección IPv4 de red = 50.1.0.0
+		dirección IPv4 del broadcast = 50.1.0.3
+		dirección IPv4 disponibles = 2
+		dirección IPv4 de Claro = 50.1.0.1
+		dirección IPv4 del NAP-Caribe = 50.1.0.2
 
-NOTAS 3
+	Red Altice - NAP-Caribe:
+		prefijo de red = /24 => 30
+		máscara de subred = 255.255.255.0 => 255.255.255.252
+		cantidad de direcciones ipv4 = 4
+		cantidad de equipos = 2
+		dirección IPv4 de red = 100.5.2.0
+		dirección IPv4 del broadcast = 100.5.2.3
+		dirección IPv4 disponibles = 2
+		dirección IPv4 de Altice = 100.5.2.1
+		dirección IPv4 del NAP-Caribe = 100.5.2.2
 
-
-Configuración del direccionamiento IPv4
-Plan de direccionamiento IPv4 por cada red
-
-1. Dapiato-SD-R1:
-Interfaz	Dirección		IPRed				Propósito
-GO/0		(Hacia SW-Lab)		192.168.10.1 192.168.10.0/24	Gateway Lab
-G0/1		(Hacia SW-Adm)		192.168.20.1 192.168.20.0/24	Gateway Adm
-G0/2		(Hacia Server)		192.168.200.1 192.168.200.0/29	Gateway Server
-G0/3		(Hacia Claro-SD)	10.10.1.1 10.10.1.0/30Enlace	WAN
-
-vlsm = variable lenght subnet mask (mascara de subred de longitud variable)
-
-Paso 1. Identificar las propiedades de la dirección IPv4 por defecto.
-	198.0.2.0/24 (255.255.255.0) = 256 direcciones IPv4
-
-Paso 2. Identificar la necesidad de las red actual.
-	Equipos necesario: 30
-
-Paso 3. Modificar la máscara de subred, para ajustarle a las necesidades reales.
-	1. Tomar la porción de la mascara de subred que se puede modificar.
-		.0
-	2. Convertir la porción de la mascara de subred en binario.
-		00000000
-	3. Encender los bits necesario hasta que la máscara se ajuste al requerimiento.
-		11100000
-	4. Convertir la porción de la máscara de subred modificada de bianario a decimal.
-		.224
-	5. Vuelvo a ensamblar la nueva máscara de subred.
-		255.255.255.224
-		/27
-
-128	64	32	16	8	4	2	1	0
-1	1	1	1	1	1	1	1	1 = 256
-
-red #1 (198.0.2.0 - 198.0.0.31)
-red #2 (198.0.2.32 - 198.0.0.63)
-red #3 (198.0.2.64 - 198.0.0.95)
-red #4 (198.0.2.96 - 198.0.0.227)
-
-
-NOTAS 4
-
-
-Rangos de red:
-Rango A: 
-	IPv4: 0.0.0.0 => 126.255.255.255
-	Mask: 255.0.0.0
-	Bits: 8
-Rango B: 
-	IPv4: 0.0.0.0 => 191.255.255.255
-	Mask: 255.255.0.0
-	Bits: 16
-Rango C: 
-	IPv4: 0.0.0.0 => 223.255.255.255
-	Mask: 255.255.255.0
-	Bits: 24
-
-Red:
-	255.255.255.0
-Subred:
-	255.255.255.224 /24
-Superred:
-	255.255.192.0 /18
-
-Red Dapiato-SD:
-	prefijo de red = /24 => /27
-	máscara de subred = 255.255.255.0 => 255.255.255.224
-	cantidad de direcciones ipv4 = 256 => 32
-	cantidad de equipos = 30
-	dirección IPv4 de red = 198.0.2.0
-	dirección IPv4 del broadcast = 198.0.2.31
-	dirección IPv4 disponibles = 30
-	dirección IPv4 del router = 198.0.2.1
-	dirección IPv4 del switch1 = 198.0.2.2
-	dirección IPv4 del switch2 = 198.0.2.3
-	dirección IPv4 del server = 198.0.2.4
-	dirección IPv4 del soporte = 198.0.2.5
-	dirección IPv4 de la coordinadora = 198.0.2.6
-	dirección IPv4 de la secretaria = 198.0.2.7
-	dirección IPv4 del director = 198.0.2.8
-	direcciones IPv4 por dhcp = desde la 198.0.2.9 hasta la 198.0.2.30
-
-Red Dapiato-Azua:
-	prefijo de red = /24 => /27
-	máscara de subred = 255.255.255.0 => 255.255.255.224
-	cantidad de direcciones ipv4 = 256 => 32
-	cantidad de equipos = 30
-	dirección IPv4 de red = 200.0.2.0
-	dirección IPv4 del broadcast = 200.0.2.31
-	dirección IPv4 disponibles = 30
-	dirección IPv4 del router = 200.0.2.1
-	dirección IPv4 del switch1 = 200.0.2.2
-	dirección IPv4 del switch2 = 200.0.2.3
-	dirección IPv4 del server = 200.0.2.4
-	dirección IPv4 del soporte = 200.0.2.5
-	dirección IPv4 de la coordinadora = 200.0.2.6
-	dirección IPv4 de la secretaria = 200.0.2.7
-	dirección IPv4 del director = 200.0.2.8
-	direcciones IPv4 por dhcp = desde la 200.0.2.9 hasta la 200.0.2.30
-
-Red Dapiato-SD - Claro:
-	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0 => 255.255.255.252
-	cantidad de direcciones ipv4 = 4
-	cantidad de equipos = 2
-	dirección IPv4 de red = 104.97.2.0
-	dirección IPv4 del broadcast = 104.97.2.3
-	dirección IPv4 disponibles = 2
-	dirección IPv4 de Dapiato-SD = 104.97.2.1
-	dirección IPv4 de Claro = 104.97.2.2
-
-Red Dapiato-Azua - Altice:
-	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0 => 255.255.255.252
-	cantidad de direcciones ipv4 = 4
-	cantidad de equipos = 2
-	dirección IPv4 de red = 110.97.2.0
-	dirección IPv4 del broadcast = 110.97.2.3
-	dirección IPv4 disponibles = 2
-	dirección IPv4 de Dapiato-Azua = 110.97.2.1
-	dirección IPv4 de Altice = 110.97.2.2
-
-Red Claro - NAP-Caribe:
-	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0 => 255.255.255.252
-	cantidad de direcciones ipv4 = 4
-	cantidad de equipos = 2
-	dirección IPv4 de red = 50.1.0.0
-	dirección IPv4 del broadcast = 50.1.0.3
-	dirección IPv4 disponibles = 2
-	dirección IPv4 de Claro = 50.1.0.1
-	dirección IPv4 del NAP-Caribe = 50.1.0.2
-
-Red Altice - NAP-Caribe:
-	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0 => 255.255.255.252
-	cantidad de direcciones ipv4 = 4
-	cantidad de equipos = 2
-	dirección IPv4 de red = 100.5.2.0
-	dirección IPv4 del broadcast = 100.5.2.3
-	dirección IPv4 disponibles = 2
-	dirección IPv4 de Altice = 100.5.2.1
-	dirección IPv4 del NAP-Caribe = 100.5.2.2
-
-Red NAP-Caribe - NAP-USA:
-	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0 => 255.255.255.252
-	cantidad de direcciones ipv4 = 4
-	cantidad de equipos = 2
-	dirección IPv4 de red = 83.64.3.0
-	dirección IPv4 del broadcast = 3.64.3.3
-	dirección IPv4 disponibles = 2
-	dirección IPv4 del NAP-Caribe = 83.64.3.1
-	dirección IPv4 del NAP-USA = 83.64.3.2
-
-Red NAP-USA - San-Francisco:
-	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0 => 255.255.255.252
-	cantidad de direcciones ipv4 = 4
-	cantidad de equipos = 2
-	dirección IPv4 de red = 63.42.2.0
-	dirección IPv4 del broadcast = 63.42.2.3
-	dirección IPv4 disponibles = 2
-	dirección IPv4 del NAP-USA = 63.42.2.1
-	dirección IPv4 de San-Francisco = 63.42.2.2
-
-Red NAP-USA - Atlanta:
-	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0 => 255.255.255.252
-	cantidad de direcciones ipv4 = 4
-	cantidad de equipos = 2
-	dirección IPv4 de red = 70.30.2.0
-	dirección IPv4 del broadcast = 70.30.2.3
-	dirección IPv4 disponibles = 2
-	dirección IPv4 del Nap-USA = 70.30.2.1
-	dirección IPv4 de Atlanta = 70.30.2.2
-
-Red San-Francisco - Google:
-	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0 => 255.255.255.252
-	cantidad de direcciones ipv4 = 4
-	cantidad de equipos = 2
-	dirección IPv4 de red = 65.200.0.0
-	dirección IPv4 del broadcast = 65.200.0.3
-	dirección IPv4 disponibles = 2
-	dirección IPv4 del Nap-USA = 65.200.0.1
-	dirección IPv4 de Atlanta = 65.200.0.2
-
-Red Atlanta - Meta:
-	prefijo de red = /24 => 30
-	máscara de subred = 255.255.255.0 => 255.255.255.252
-	cantidad de direcciones ipv4 = 4
-	cantidad de equipos = 2
-	dirección IPv4 de red = 30.60.1.0
-	dirección IPv4 del broadcast = 30.60.1.3
-	dirección IPv4 disponibles = 2
-	dirección IPv4 del Nap-USA = 30.60.1.1
-	dirección IPv4 de Atlanta = 30.60.1.2
-
-Red Google:
-	prefijo de red = /24
-	máscara de subred = 255.255.255.0
-	cantidad de direcciones ipv4 = 256
-	cantidad de equipos = 254
-	dirección IPv4 de red = 142.250.105.0
-	dirección IPv4 del broadcast = 142.250.105.255
-	dirección IPv4 disponibles = 254
-	dirección IPv4 del router = 142.250.105.1
-	dirección IPv4 del switch = 142.250.105.2
-	dirección IPv4 del server = 142.250.105.3
-	direcciones IPv4 por dhcp = desde la 142.250.105.4 hasta la 142.250.105.254
-
-Red Meta:
-	prefijo de red = /24
-	máscara de subred = 255.255.255.0
-	cantidad de direcciones ipv4 = 256
-	cantidad de equipos = 254
-	dirección IPv4 de red = 57.144.132.0
-	dirección IPv4 del broadcast = 57.144.132.255
-	dirección IPv4 disponibles = 254
-	dirección IPv4 del router = 57.144.132.1
-	dirección IPv4 del switch = 57.144.132.2
-	dirección IPv4 del server = 57.144.132.3
-	direcciones IPv4 por dhcp = desde la 57.144.132.4 hasta la 57.144.132.254
-
-Fase #1 - Planeamiento
-Fase #2 - Direccionamiento
-Fase #3 - Enrutamiento
-
-
-NOTAS 5
-
-
-Comandos para agregar una dirección IP en una interfaz de red del router:
-	int(interface) nombre_interfaz
-	desc(description) 'mensaje o descripción sobre la conexión'
-	ip(interface_protocolo) add(agregate) direción_IP máscara_subred
-	no shut(no_apagar)
-	exit(salir) 
+	Red NAP-Caribe - NAP-USA:
+		prefijo de red = /24 => 30
+		máscara de subred = 255.255.255.0 => 255.255.255.252
+		cantidad de direcciones ipv4 = 4
+		cantidad de equipos = 2
+		dirección IPv4 de red = 83.64.3.0
+		dirección IPv4 del broadcast = 3.64.3.3
+		dirección IPv4 disponibles = 2
+		dirección IPv4 del NAP-Caribe = 83.64.3.1
+		dirección IPv4 del NAP-USA = 83.64.3.2
 	
-Ejemplo:
-	int g0/0(gigabit_ethernet)
-	desc Interfaz de red del LAN router
-	ip add 10.0.0.1 255.255.255.0
-	no shut 
+	Red NAP-USA - San-Francisco:
+		prefijo de red = /24 => 30
+		máscara de subred = 255.255.255.0 => 255.255.255.252
+		cantidad de direcciones ipv4 = 4
+		cantidad de equipos = 2
+		dirección IPv4 de red = 63.42.2.0
+		dirección IPv4 del broadcast = 63.42.2.3
+		dirección IPv4 disponibles = 2
+		dirección IPv4 del NAP-USA = 63.42.2.1
+		dirección IPv4 de San-Francisco = 63.42.2.2
+
+	Red NAP-USA - Atlanta:
+		prefijo de red = /24 => 30
+		máscara de subred = 255.255.255.0 => 255.255.255.252
+		cantidad de direcciones ipv4 = 4
+		cantidad de equipos = 2
+		dirección IPv4 de red = 70.30.2.0
+		dirección IPv4 del broadcast = 70.30.2.3
+		dirección IPv4 disponibles = 2
+		dirección IPv4 del Nap-USA = 70.30.2.1
+		dirección IPv4 de Atlanta = 70.30.2.2
+
+	Red San-Francisco - Google:
+		prefijo de red = /24 => 30
+		máscara de subred = 255.255.255.0 => 255.255.255.252
+		cantidad de direcciones ipv4 = 4
+		cantidad de equipos = 2
+		dirección IPv4 de red = 65.200.0.0
+		dirección IPv4 del broadcast = 65.200.0.3
+		dirección IPv4 disponibles = 2
+		dirección IPv4 del Nap-USA = 65.200.0.1
+		dirección IPv4 de Atlanta = 65.200.0.2
+
+	Red Atlanta - Meta:
+		prefijo de red = /24 => 30
+		máscara de subred = 255.255.255.0 => 255.255.255.252
+		cantidad de direcciones ipv4 = 4
+		cantidad de equipos = 2
+		dirección IPv4 de red = 30.60.1.0
+		dirección IPv4 del broadcast = 30.60.1.3
+		dirección IPv4 disponibles = 2
+		dirección IPv4 del Nap-USA = 30.60.1.1
+		dirección IPv4 de Atlanta = 30.60.1.2
+
+	Red Google:
+		prefijo de red = /24
+		máscara de subred = 255.255.255.0
+		cantidad de direcciones ipv4 = 256
+		cantidad de equipos = 254
+		dirección IPv4 de red = 142.250.105.0
+		dirección IPv4 del broadcast = 142.250.105.255
+		dirección IPv4 disponibles = 254
+		dirección IPv4 del router = 142.250.105.1
+		dirección IPv4 del switch = 142.250.105.2
+		dirección IPv4 del server = 142.250.105.3
+		direcciones IPv4 por dhcp = desde la 142.250.105.4 hasta la 142.250.105.254
+
+	Red Meta:
+		prefijo de red = /24
+		máscara de subred = 255.255.255.0
+		cantidad de direcciones ipv4 = 256
+		cantidad de equipos = 254
+		dirección IPv4 de red = 57.144.132.0
+		dirección IPv4 del broadcast = 57.144.132.255
+		dirección IPv4 disponibles = 254
+		dirección IPv4 del router = 57.144.132.1
+		dirección IPv4 del switch = 57.144.132.2
+		dirección IPv4 del server = 57.144.132.3
+		direcciones IPv4 por dhcp = desde la 57.144.132.4 hasta la 57.144.132.254
+
+
+
+Configuración modelo para el direccionamiento IP y el enrutamiento estático: 
+	en
+	conf t
+	int nombre_interfaz
+	desc 'mensaje o descripción sobre la conexión'
+	ip add direción_IP máscara_subred
+	no shut
+	exit 
+
+	int nombre_interfaz
+	desc 'mensaje o descripción sobre la conexión'
+	ip add direción_IP máscara_subred
+	no shut
 	exit
+	
+	ip route dirección_IP_red_destino mascara_subred_destino dirección_interfaz_router_loca
+	end
+	copy run start
 
-Comandos para implementar el enrutamiento estático en routers cisco en el modo de configuración global:
-	Opción_1
-		ip route dirección_IP_red_destino mascara_subred_destino dirección_IP_interfaz_router_vecino
 
-	Opción_2
-		ip route dirección_IP_red_destino mascara_subred_destino dirección_interfaz_router_local
 
-Ejemplo:
-	Opción_1
-		ip route 172.0.100.0 255.255.192.0 100.0.5.2
-
-	Opción_2
-		ip route 172.0.100.0 255.255.192.0 g0/1
-
-Router Dapiato_SD:
-	Conoce:
-		Claro
-	No conoce:
-		Daipiato_Azua
-		Altice
-		NAP-Caribe
-		NAP-USA
-		San-Francisco
-		Google
-		Atlanta
-		Meta
-
-Configurando direccionamiento IP a los routers
-
-	Configuración modelo 
-		en
-		conf t
-		int nombre_interfaz
-		desc 'mensaje o descripción sobre la conexión'
-		ip add direción_IP máscara_subred
-		no shut
-		exit 
-		int nombre_interfaz
-		desc 'mensaje o descripción sobre la conexión'
-		ip add direción_IP máscara_subred
-		ip route dirección_IP_red_destino mascara_subred_destino dirección_interfaz_router_loca
-		end
-		copy run start
-		reload
-
-ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
-ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Claro
-ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_Claro
-ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_Claro
-ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_Claro
-ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_Claro
-ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_Claro
-ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_Claro
-ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_Claro
-ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Claro
-ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Claro
-ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Claro
+Enrutamiento estático de Dapiato-SD:
+	ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_Claro
+	ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Claro
+	ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_Claro
+	ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_Claro
+	ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_Claro
+	ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_Claro
+	ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_Claro
+	ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_Claro
+	ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_Claro
+	ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Claro
+	ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Claro
+	ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Claro
 
 Configuración Dapiato-SD:
-		en
-		conf t
-		int g0/1
-		desc puerta de enlace predeterminada
-		ip add 198.0.2.1 255.255.255.224
-		no shut
-		exit 
-		int g0/2
-		desc conexion WAN entre la red Dapiato-SD y el ISP de Claro
-		ip add 104.97.2.1 255.255.255.252
-		ip route 200.0.2.0 255.255.255.224 104.97.2.2
-		int g0/2
-		ip route 110.97.2.0 255.255.255.252 104.97.2.2
-		int g0/2
-		ip route 100.5.2.0 255.255.255.252 104.97.2.2
-		int g0/2
-		ip route 83.64.3.0 255.255.255.252 104.97.2.2
-		int g0/2
-		ip route 70.30.2.0 255.255.255.252 104.97.2.2
-		int g0/2
-		ip route 30.60.1.0 255.255.255.252 104.97.2.2
-		int g0/2
-		ip route 57.144.132.0 255.255.255.0 104.97.2.2
-		int g0/2
-		ip route 63.42.2.0 255.255.255.252 104.97.2.2
-		int g0/2
-		ip route 65.200.0.0 255.255.255.252 104.97.2.2
-		int g0/2
-		ip route 142.250.105.0 255.255.255.0 104.97.2.2
-		int g0/2
-		ip route 50.1.0.0 255.255.255.252 104.97.2.2
-		int g0/2
-		ip route 104.97.2.0 255.255.255.252 104.97.2.2
-		end
-		copy run start
-		reload
-show run
+	en
+	conf t
+	int g0/1
+	desc Puerta de enlace predeterminada
+	ip add 198.0.2.1 255.255.255.224
+	no shut
+	exit 
 
-ip route IP_red_Dapiato-SD mascara_subred_Dapiato_Azua IP_interfaz_Altice
-ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Altice
-ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Altice
-ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_Altice
-ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_Altice
-ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_Altice
-ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Altice
-ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_Altice
-ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_Altice
-ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_Altice
-ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_Altice
-ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Altice
+	int g0/2
+	desc Conexion WAN entre la red Dapiato-SD y el ISP de Claro
+	ip add 104.97.2.1 255.255.255.252
+	no shut
+	exit 
+		
+	ip route 200.0.2.0 255.255.255.224 104.97.2.2
+	ip route 110.97.2.0 255.255.255.252 104.97.2.2
+	ip route 100.5.2.0 255.255.255.252 104.97.2.2
+	ip route 83.64.3.0 255.255.255.252 104.97.2.2
+	ip route 70.30.2.0 255.255.255.252 104.97.2.2
+	ip route 30.60.1.0 255.255.255.252 104.97.2.2
+	ip route 57.144.132.0 255.255.255.0 104.97.2.2
+	ip route 63.42.2.0 255.255.255.252 104.97.2.2
+	ip route 65.200.0.0 255.255.255.252 104.97.2.2
+	ip route 142.250.105.0 255.255.255.0 104.97.2.2
+	ip route 50.1.0.0 255.255.255.252 104.97.2.2
+	ip route 104.97.2.0 255.255.255.252 104.97.2.2
+	end
+	copy run start
+
+
+
+Enrutamiento estático de Dapiato-Azua:
+	ip route IP_red_Dapiato-SD mascara_subred_Dapiato_SD IP_interfaz_Altice
+	ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Altice
+	ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Altice
+	ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_Altice
+	ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_Altice
+	ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_Altice
+	ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Altice
+	ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_Altice
+	ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_Altice
+	ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_Altice
+	ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_Altice
+	ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Altice
 
 Configuración Dapiato-Azua:
-		en
-		conf t
-		int g0/1
-		desc puerta de enlace predeterminada
-		ip add 200.0.2.1 255.255.255.224
-		no shut
-		exit 
-		int g0/2
-		desc conexion WAN entre la red Dapiato-Azua y el ISP de Altice
-		ip add 110.97.2.1 255.255.255.252
-		ip route 198.0.2.0 255.255.255.224 110.97.2.2
-		int g0/2
-		ip route 104.97.2.0 255.255.255.252 110.97.2.2
-		int g0/2
-		ip route 50.1.0.0 255.255.255.252 110.97.2.2
-		int g0/2
-		ip route 83.64.3.0 255.255.255.252 110.97.2.2
-		int g0/2
-		ip route 63.42.2.0 255.255.255.252 110.97.2.2
-		int g0/2
-		ip route 65.200.0.0 255.255.255.252 110.97.2.2
-		int g0/2
-		ip route 142.250.105.0 255.255.255.0 110.97.2.2
-		int g0/2
-		ip route 70.30.2.0 255.255.255.252 110.97.2.2
-		int g0/2
-		ip route 30.60.1.0 255.255.255.252 110.97.2.2
-		int g0/2
-		ip route 57.144.132.0 255.255.255.0 110.97.2.2
-		int g0/2
-		ip route 100.5.2.0 255.255.255.252 110.97.2.2
-		int g0/2
-		ip route 110.97.2.0 255.255.255.252 110.97.2.2
-		end
-		copy run start
-		reload
-show run
+	en
+	conf t
+	int g0/1
+	desc Puerta de enlace predeterminada
+	ip add 200.0.2.1 255.255.255.224
+	no shut
+	exit 
+	
+	int g0/2
+	desc Conexion WAN entre la red Dapiato-Azua y el ISP de Altice
+	ip add 110.97.2.1 255.255.255.252
+	no shut
+	exit
+
+	ip route 198.0.2.0 255.255.255.224 110.97.2.2
+	ip route 104.97.2.0 255.255.255.252 110.97.2.2
+	ip route 50.1.0.0 255.255.255.252 110.97.2.2
+	ip route 83.64.3.0 255.255.255.252 110.97.2.2
+	ip route 63.42.2.0 255.255.255.252 110.97.2.2
+	ip route 65.200.0.0 255.255.255.252 110.97.2.2
+	ip route 142.250.105.0 255.255.255.0 110.97.2.2
+	ip route 70.30.2.0 255.255.255.252 110.97.2.2
+	ip route 30.60.1.0 255.255.255.252 110.97.2.2
+	ip route 57.144.132.0 255.255.255.0 110.97.2.2
+	ip route 100.5.2.0 255.255.255.252 110.97.2.2
+	ip route 110.97.2.0 255.255.255.252 110.97.2.2
+	end
+	copy run start
 
 
 
+Enrutamiento estático de Claro:
+	ip route IP_red_Dapiato-SD mascara_subred_Dapiato_SD IP_interfaz_router_Dapiato-SD
+	ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Dapiato-SD
+	ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_NAP-Caribe
+	ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_NAP-Caribe
+	ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_NAP-Caribe
+	ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_NAP-Caribe
+	ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_NAP-Caribe
+	ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_NAP-Caribe
+	ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_NAP-Caribe
+	ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_NAP-Caribe
+	ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_NAP-Caribe
+	ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_NAP-Caribe
+	ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_NAP-Caribe
+
+Configuración Claro:
+	en
+	conf t
+	int g0/2
+	desc Puerta de enlace predeterminada
+	ip add 104.97.2.2 255.255.255.252
+	no shut
+	exit	
+
+	int g0/1
+	desc Conexion WAN entre el ISP de Claro y el NAP del Caribe
+	ip add 50.1.0.1 255.255.255.252
+	no shut
+	exit
+	
+	ip route 198.0.2.0 255.255.255.224 104.97.2.1
+	ip route 200.0.2.0 255.255.255.224 50.1.0.2
+	ip route 200.0.2.0 255.255.255.224 50.1.0.2
+	ip route 110.97.2.0 255.255.255.252 50.1.0.2
+	ip route 100.5.2.0 255.255.255.252 50.1.0.2
+	ip route 83.64.3.0 255.255.255.252 50.1.0.2
+	ip route 70.30.2.0 255.255.255.252 50.1.0.2
+	ip route 30.60.1.0 255.255.255.252 50.1.0.2
+	ip route 57.144.132.0 255.255.255.0 50.1.0.2
+	ip route 63.42.2.0 255.255.255.252 50.1.0.2
+	ip route 65.200.0.0 255.255.255.252 50.1.0.2
+	ip route 142.250.105.0 255.255.255.0 50.1.0.2
+	ip route 50.1.0.0 255.255.255.252 50.1.0.2
+	end
+	copy run start
 
 
 
