@@ -230,7 +230,6 @@ Enrutamiento estático de Dapiato-SD:
 	ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_Claro
 	ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_Claro
 	ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_Claro
-	ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Claro
 
 Configuración Dapiato-SD:
 	en
@@ -258,7 +257,6 @@ Configuración Dapiato-SD:
 	ip route 65.200.0.0 255.255.255.252 104.97.2.2
 	ip route 142.250.105.0 255.255.255.0 104.97.2.2
 	ip route 50.1.0.0 255.255.255.252 104.97.2.2
-	ip route 104.97.2.0 255.255.255.252 104.97.2.2
 	end
 	copy run start
 
@@ -276,7 +274,6 @@ Enrutamiento estático de Dapiato-Azua:
 	ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_Altice
 	ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_Altice
 	ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_Altice
-	ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Altice
 
 Configuración Dapiato-Azua:
 	en
@@ -304,7 +301,6 @@ Configuración Dapiato-Azua:
 	ip route 30.60.1.0 255.255.255.252 110.97.2.2
 	ip route 57.144.132.0 255.255.255.0 110.97.2.2
 	ip route 100.5.2.0 255.255.255.252 110.97.2.2
-	ip route 110.97.2.0 255.255.255.252 110.97.2.2
 	end
 	copy run start
 
@@ -312,7 +308,7 @@ Configuración Dapiato-Azua:
 
 Enrutamiento estático de Claro:
 	ip route IP_red_Dapiato-SD mascara_subred_Dapiato_SD IP_interfaz_router_Dapiato-SD
-	ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Dapiato-SD
+
 	ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_NAP-Caribe
 	ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_NAP-Caribe
 	ip route IP_red_Altice-NAP-Caribe mascara_subred_Altice-NAP-Caribe IP_interfaz_NAP-Caribe
@@ -323,7 +319,6 @@ Enrutamiento estático de Claro:
 	ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_NAP-Caribe
 	ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_NAP-Caribe
 	ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_NAP-Caribe
-	ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_NAP-Caribe
 
 Configuración Claro:
 	en
@@ -341,7 +336,7 @@ Configuración Claro:
 	exit
 	
 	ip route 198.0.2.0 255.255.255.224 104.97.2.1
-	ip route 200.0.2.0 255.255.255.224 50.1.0.2
+
 	ip route 200.0.2.0 255.255.255.224 50.1.0.2
 	ip route 110.97.2.0 255.255.255.252 50.1.0.2
 	ip route 100.5.2.0 255.255.255.252 50.1.0.2
@@ -352,10 +347,53 @@ Configuración Claro:
 	ip route 63.42.2.0 255.255.255.252 50.1.0.2
 	ip route 65.200.0.0 255.255.255.252 50.1.0.2
 	ip route 142.250.105.0 255.255.255.0 50.1.0.2
-	ip route 50.1.0.0 255.255.255.252 50.1.0.2
 	end
 	copy run start
 
 
+
+Enrutamiento estático de Altice:
+	ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_router_Dapiato-Azua
+
+	ip route IP_red_Dapiato-SD mascara_subred_Dapiato_SD IP_interfaz_NAP-Caribe
+	ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_NAP-Caribe
+	ip route IP_red_Claro-NAP-Caribe mascara_subred_Claro-NAP-Caribe IP_interfaz_NAP-Caribe
+	ip route IP_red_NAP-Caribe-NAP-USA mascara_subred_NAP-Caribe-NAP-USA IP_interfaz_NAP-Caribe
+	ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_NAP-Caribe
+	ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_NAP-Caribe
+	ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_NAP-Caribe
+	ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_NAP-Caribe
+	ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_NAP-Caribe
+	ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_NAP-Caribe
+
+Configuración Altice:
+	en
+	conf t
+	int g0/2
+	desc Puerta de enlace predeterminada
+	ip add 110.97.2.2 255.255.255.252
+	no shut
+	exit	
+
+	int g0/1
+	desc Conexion WAN entre el ISP de Altice y el NAP del Caribe
+	ip add 100.5.2.1 255.255.255.252
+	no shut
+	exit
+	
+	ip route 200.0.2.0 255.255.255.224 110.97.2.1
+
+	ip route 198.0.2.0 255.255.255.224 100.5.2.2
+	ip route 104.97.2.0 255.255.255.252 100.5.2.2
+	ip route 50.1.0.0 255.255.255.252 100.5.2.2
+	ip route 83.64.3.0 255.255.255.252 100.5.2.2
+	ip route 63.42.2.0 255.255.255.252 100.5.2.2
+	ip route 65.200.0.0 255.255.255.252 100.5.2.2
+	ip route 142.250.105.0 255.255.255.0 100.5.2.2
+	ip route 70.30.2.0 255.255.255.252 100.5.2.2
+	ip route 30.60.1.0 255.255.255.252 100.5.2.2
+	ip route 57.144.132.0 255.255.255.0 100.5.2.2
+	end
+	copy run start
 
 
