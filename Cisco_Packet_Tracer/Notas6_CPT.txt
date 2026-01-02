@@ -375,7 +375,7 @@ Configuración Altice:
 	no shut
 	exit	
 
-	int g0/1
+	int g0/0
 	desc Conexion WAN entre el ISP de Altice y el NAP del Caribe
 	ip add 100.5.2.1 255.255.255.252
 	no shut
@@ -393,6 +393,58 @@ Configuración Altice:
 	ip route 70.30.2.0 255.255.255.252 100.5.2.2
 	ip route 30.60.1.0 255.255.255.252 100.5.2.2
 	ip route 57.144.132.0 255.255.255.0 100.5.2.2
+	end
+	copy run start
+
+
+
+Enrutamiento estático del NAP del Caribe:
+	ip route IP_red_Dapiato-SD mascara_subred_Dapiato_SD IP_interfaz_Claro
+	ip route IP_red_Dapiato-SD-Claro mascara_subred_Dapiato-SD-Claro IP_interfaz_Claro
+
+	ip route IP_red_Dapiato-Azua mascara_subred_Dapiato_Azua IP_interfaz_Altice
+	ip route IP_red_Dapiato-Azua-Altice mascara_subred_Dapiato-Azua-Altice IP_interfaz_Altice
+
+	ip route IP_red_NAP-USA-San-Francisco mascara_subred_NAP-USA-San-Francisco IP_interfaz_NAP-USA
+	ip route IP_red_San-Francisco-Google.com mascara_subred_San-Francisco-Google.com IP_interfaz_NAP-USA
+	ip route IP_red_Google.com mascara_subred_Google.com IP_interfaz_NAP-USA
+	ip route IP_red_NAP-USA-Atlanta mascara_subred_NAP-USA-Atlanta IP_interfaz_NAP-USA
+	ip route IP_red-Atlanta-Meta.com mascara_subred_Atlanta-Meta.com IP_interfaz_NAP-USA
+	ip route IP_red-Meta.com mascara_subred_Meta.com IP_interfaz_NAP-USA
+
+Configuración NAP del Caribe:
+	en
+	conf t
+	int g0/1
+	desc Conexion WAN entre el NAP del Caribe y el ISP de Claro
+	ip add 50.1.0.2 255.255.255.252
+	no shut
+	exit	
+
+	int g0/0
+	desc Conexion WAN entre el NAP del Caribe y el ISP de Altice
+	ip add 100.5.2.2 255.255.255.252
+	no shut
+	exit
+
+	int g0/2
+	desc Conexion WAN entre el NAP del Caribe y el NAP de USA
+	ip add 83.64.3.1 255.255.255.252
+	no shut
+	exit
+	
+	ip route 198.0.2.0 255.255.255.224 50.1.0.1
+	ip route 104.97.2.0 255.255.255.252 50.1.0.1
+
+	ip route 200.0.2.0 255.255.255.224 100.5.2.1
+	ip route 110.97.2.0 255.255.255.252 100.5.2.1
+
+	ip route 63.42.2.0 255.255.255.252 83.64.3.2
+	ip route 65.200.0.0 255.255.255.252 83.64.3.2
+	ip route 142.250.105.0 255.255.255.0 83.64.3.2
+	ip route 70.30.2.0 255.255.255.252 83.64.3.2
+	ip route 30.60.1.0 255.255.255.252 83.64.3.2
+	ip route 57.144.132.0 255.255.255.0 83.64.3.2
 	end
 	copy run start
 
