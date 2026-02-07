@@ -1,0 +1,60 @@
+Mi nombre: Javier Jiménez
+Encriptación: jy@)13!-y1[3(3.Z
+
+Dirección física. . . . . . . . . . . . . : 34-17-EB-A5-C7-0D
+
+Dirección física\dirección MAC\MAC address:
+Dirección única del adaptador de red de cualquier dispositivo que se conecte a una red o que comparta la conexión de una red.
+
+Es decir, cuando solicito la conexión a una red, comparto mi dirección MAC, y cuando comparto o pongo a disposición una red para que se conecten a dicha red a travez de mi, comparto la dirección MAC de mi adaptador.
+
+Una dirección MAC, está compuesta por 6 grupos de 2 digitos (estos pueden ser del 0 al 9 y de la letra A a la letra Z).
+
+Modem (modulator/demodulator = modulador/demodulador):
+Convierte la señal electromagnetica a señal electrica y viceversa.
+
+Router: Tiene un modem integrado. Administra redes por dirección IP.
+Switch: Tiene un modem integrado. Administra redes por dirección MAC.
+Firewall: Tiene un modem integrado. Administra redes por politicas de seguridad.
+Repetidor: Tiene un modem integrado. Replica la condiguración de la red para mayor cobertura.
+Dispositivo multifunción: Está conformado por todos los dispositivos ya mencionados.
+
+Los IPS (Internet Services Providers) te suministran un dispositivo multifuncional (sea convencional o portátil) para que te conectes a internet a travez de dicho dispositivo utilizando sus servicios.
+
+Cada dispositivo multifuncional (el router inalambrico) tiene un tarjeta de red "inalambrica" por donde transmite el canal, el SSID (Service Set Identifier) y la dirección MAC de su tarjeta, en espera de solicitudes de conexión hacia ese red por parte de otros dispositivos.
+
+Cuando un dispositivo final con el adaptador inalambrico encendido detecta la señal de conexión del dispositivo multifuncional, este dispopsitivo puede ver el SSID de la red y puede solicitar una sesión de conexión con el dispositivo multifuncional y, una vez registradas y verificadas las credenciales de acceso, se establece la conexión entre ambos dispositivos. 
+
+Laboratorio: Calcular la contraseña por defecto de un router de bolsillo partiendo de su SSID y de su dirección MAC.
+
+Datos:
+	SSID: CLARO_INTERNET_2.4GHZ_DB1
+	MAC: ?
+	Contraseña: CLAROCDB1
+
+Fórmula: El nombre del ISP + últimos 4 dígitos de la MAC.
+
+Nota (vulnerabilidad): En el SSID por defecto, se obtiene el nombre del ISP y los últimos 3 digitos de la MAC, por ende, solo necesitamos calcular el último digito de la MAC para completar la contraseña.
+
+ISP: CLARO
+Últimos 3 digitos MAC: DB1
+Contraseña: CLARO[?]DB1
+
+Diccionario de posibles contraseñas: 
+CLARO0DB1 claro0DB1 Claro0DB1
+CLARO1DB1
+CLARO2DB1
+CLARO3DB1
+CLARO4DB1
+CLARO5DB1
+CLARO6DB1
+CLARO7DB1
+CLARO8DB1
+CLARO9DB1
+CLAROADB1
+CLAROBDB1
+CLAROCDB1
+CLARODDB1
+CLAROEDB1
+CLAROFDB1
+CLAROGDB1
