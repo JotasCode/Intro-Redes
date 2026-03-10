@@ -1,2 +1,2 @@
 # Intro-Redes
-Repositorio para el módulo de introducción a las redes (CCNA1).
+Prácticas y proyectos relacionados a las bases de las redes informáticas (CCNA1).
